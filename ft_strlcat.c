@@ -6,14 +6,9 @@
 /*   By: zichen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 13:09:21 by zichen            #+#    #+#             */
-/*   Updated: 2023/09/10 14:33:12 by zichen           ###   ########.fr       */
+/*   Updated: 2023/09/10 13:37:13 by zichen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/* 1. calculate size of dest string			*/
-/* 2. append src to end of dest string			*/
-/* 3. add null terminator to the end of dest+src string */
-/* 4. return total length of dest+src string		*/
 
 #include "libft.h"
 
