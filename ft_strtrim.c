@@ -6,7 +6,7 @@
 /*   By: zichen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 14:26:14 by zichen            #+#    #+#             */
-/*   Updated: 2023/09/14 16:08:51 by zichen           ###   ########.fr       */
+/*   Updated: 2023/09/20 12:01:34 by zichen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 	char	*str;
 
 	str = 0;
-	if (s1 != '\0' && set != '\0')
+	if (s1 != 0 && set != 0)
 	{
 		i = 0;
 		j = ft_strlen(s1);
