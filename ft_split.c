@@ -1,103 +1,98 @@
-/*	1. calculate number of substrings								*/
-/*	2. free memory allocated for array of strings and its elements	*/
-/*	3. create substring												*/
-/*	4. split input string into substrings using delimiter character	*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zichen <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/03 16:03:04 by zichen            #+#    #+#             */
+/*   Updated: 2023/10/03 16:05:18 by zichen           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-static	int	ft_subnb(char const *s, char c)
-{
-	size_t	nbr;
-	int		i;
-
-	nbr = 0;
-	i = 0;
-
-	while (s[i] != '\0')
-	{
-		while (s[i] == c)
-			i++;
-		if (i > 0 && s[i] != '\0' && s[i - 1] == c)
-			nbr++;
-		if (s[i] != '\0')
-			i++;
-	}
-	if (nbr == 0 && s[1 - i] == c)
-		return (0);
-	if (s[0] != c)
-		nbr++;
-	return (nbr);
-}
-
-static	char	**ft_stralloc(char **strs, char const *s, char c)
-{
-	size_t	count;
-	int		i;
-	int		j;
-
-	count = 0;
-	i = 0;
-	j = 0;
-	while (s[i])
-	{
-		if (s[i] != c)
-			count++;
-			else if (i > 0 && s[i - 1] != c)
-			{
-				strs[j] = malloc(sizeof(char) * (count + 1));
-				if (strs[j] == NULL)
-					return (NULL);
-				count = 0;
-				i++;
-			}
-			if (s[i + 1] == '\0' && s[i] != c)
-				if (!strs[i] = malloc(sizeof(char) * (count + 1)));
-					return (NULL);
-			i++;
-	}
-	return (strs);
-}
-
-static	char	**ft_copy(char **strs, char const *s, char c)
+static int	count_substr(char const *str, char c)
 {
 	int	i;
-	int	j;
-	int	k;
+	int	count;
 
 	i = 0;
-	j = 0;
-	k = 0;
-	while(s[k] != '\0')
+	count = 0;
+	while (str[i] != '\0')
 	{
-		if (s[k] != c)
-			strs[i][j++] = s[k];
-		else if (k > 0 && s[k - 1] != c)
-			if(k != 0)
-			{
-				strs[i][j] = '\0';
-				j = 0;
-				i++;
-			}
-		if (s[k + 1] == '\0' && s[k] != c)
-			strs[i][j] = '\0';
-		k++;
+		while (str[i] != '\0' && str[i] == c)
+			i++;
+		if (str[i] != '\0')
+			count++;
+		while (str[i] != '\0' && str[i] != c)
+			i++;
 	}
-	return (strs);
+	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**free_mem(char **strs)
 {
-	char	**res;
-	int		n;
+	int	i;
 
-	if (!s || !*s)
+	if (strs)
 	{
-		res = malloc(sizeof(char *) * 1)
-		if (res == NULL)
-			return (NULL);
-		*res = (void *)0;
-		return (res);
+		i = 0;
+		while (strs[i] != NULL)
+		{
+			free(strs[i]);
+			i++;
+		}
+		free(strs);
 	}
-	n = ft_subnb(s, c);
-	res = malloc(sizeof )
+	return (NULL);
+}
+
+static char	*copy_str(char const *str, char c)
+{
+	int		substr_len;
+	int		i;
+	char	*substr;
+
+	substr_len = 0;
+	i = 0;
+	while (str[substr_len] && !(str[substr_len] == c))
+		substr_len++;
+	substr = (char *)malloc(sizeof(char) * (substr_len + 1));
+	if (substr == NULL)
+		return (NULL);
+	while (i < substr_len)
+	{
+		substr[i] = str[i];
+		i++;
+	}
+	substr[i] = '\0';
+	return (substr);
+}
+
+char	**ft_split(const char *str, char c)
+{
+	char	**strings;
+	int		i;
+
+	i = 0;
+	strings = (char **)malloc(sizeof(char *) * (count_substr(str, c) + 1));
+	if (strings == NULL)
+		return (NULL);
+	while (*str != '\0')
+	{
+		while (*str != '\0' && (*str == c))
+			str++;
+		if (*str != '\0')
+		{
+			strings[i] = copy_str(str, c);
+			if (strings[i] == NULL)
+				return (free_mem(strings));
+			i++;
+		}
+		while (*str && !(*str == c))
+			str++;
+	}
+	strings[i] = 0;
+	return (strings);
 }
