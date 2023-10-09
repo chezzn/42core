@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zichen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:19:37 by zichen            #+#    #+#             */
-/*   Updated: 2023/10/09 19:19:39 by zichen           ###   ########.fr       */
+/*   Created: 2023/09/10 17:04:57 by zichen            #+#    #+#             */
+/*   Updated: 2023/09/11 17:24:12 by zichen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "libft/libft.h"
+char	*ft_strnstr(const char *big, const char *little, size_t n)
+{
+	size_t	i;
+	size_t	j;
 
-int	printf_char(int c);
-
-
-
-#endif
+	if (!big && !little)
+		return (NULL);
+	if (!*little)
+		return ((char *)big);
+	i = 0;
+	while (big[i] && i < n)
+	{
+		j = 0;
+		while (big[i + j] && little[j]
+			&& big[i + j] == little[j] && (i + j) < n)
+			j++;
+		if (!little[j])
+			return ((char *)(big + i));
+		i++;
+	}
+	return (NULL);
+}

@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zichen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:19:37 by zichen            #+#    #+#             */
-/*   Updated: 2023/10/09 19:19:39 by zichen           ###   ########.fr       */
+/*   Created: 2023/09/10 13:36:32 by zichen            #+#    #+#             */
+/*   Updated: 2023/09/10 13:44:35 by zichen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "libft/libft.h"
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
+	int	len;
 
-int	printf_char(int c);
-
-
-
-#endif
+	i = 0;
+	len = ft_strlen(s);
+	while (i < len + 1)
+	{
+		if (s[i] == (char)c)
+			return ((char *)s + i);
+		i++;
+	}
+	return (0);
+}

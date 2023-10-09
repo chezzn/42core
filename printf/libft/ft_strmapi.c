@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zichen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:19:37 by zichen            #+#    #+#             */
-/*   Updated: 2023/10/09 19:19:39 by zichen           ###   ########.fr       */
+/*   Created: 2023/10/03 19:44:21 by zichen            #+#    #+#             */
+/*   Updated: 2023/10/03 19:50:26 by zichen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "libft/libft.h"
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	unsigned int	i;
+	char			*str;
 
-int	printf_char(int c);
-
-
-
-#endif
+	i = 0;
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s)) + 1);
+	if (str == NULL)
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}

@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zichen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:19:37 by zichen            #+#    #+#             */
-/*   Updated: 2023/10/09 19:19:39 by zichen           ###   ########.fr       */
+/*   Created: 2023/09/10 15:22:28 by zichen            #+#    #+#             */
+/*   Updated: 2023/09/18 17:08:40 by zichen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "libft/libft.h"
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	char	*str1;
+	char	*str2;
+	size_t	i;
 
-int	printf_char(int c);
-
-
-
-#endif
+	i = 0;
+	str1 = (char *)s1;
+	str2 = (char *)s2;
+	while (i < n)
+	{
+		if (str1[i] != str2[i])
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+		i++;
+	}
+	return (0);
+}

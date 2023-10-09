@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zichen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:19:37 by zichen            #+#    #+#             */
-/*   Updated: 2023/10/09 19:19:39 by zichen           ###   ########.fr       */
+/*   Created: 2023/09/06 11:52:48 by zichen            #+#    #+#             */
+/*   Updated: 2023/09/10 12:28:01 by zichen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "libft/libft.h"
+void	*ft_memset(void *s, int c, size_t n)
+{
+	char	*p;
 
-int	printf_char(int c);
-
-
-
-#endif
+	p = (char *)s;
+	while (n > 0)
+	{
+		p[n - 1] = c;
+		n--;
+	}
+	return (s);
+}

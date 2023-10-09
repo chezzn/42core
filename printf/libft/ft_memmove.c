@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zichen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:19:37 by zichen            #+#    #+#             */
-/*   Updated: 2023/10/09 19:19:39 by zichen           ###   ########.fr       */
+/*   Created: 2023/09/10 11:54:46 by zichen            #+#    #+#             */
+/*   Updated: 2023/09/20 12:41:54 by zichen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "libft/libft.h"
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	char	*d;
+	char	*s;
+	int		i;
 
-int	printf_char(int c);
-
-
-
-#endif
+	d = (char *)dest;
+	s = (char *)src;
+	if (dest == src)
+		return (dest);
+	if (dest > src)
+	{
+		i = (int)(n - 1) + 1;
+		while (--i >= 0)
+			*(d + i) = *(s + i);
+	}
+	else
+	{
+		i = -1;
+		while (++i < (int)n)
+			*(d + i) = *(s + i);
+	}
+	return (dest);
+}

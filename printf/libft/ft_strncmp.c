@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zichen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:19:37 by zichen            #+#    #+#             */
-/*   Updated: 2023/10/09 19:19:39 by zichen           ###   ########.fr       */
+/*   Created: 2023/09/10 14:16:39 by zichen            #+#    #+#             */
+/*   Updated: 2023/09/10 14:26:35 by zichen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "libft/libft.h"
-
-int	printf_char(int c);
-
-
-
-#endif
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	while (*s1 != '\0' && *s1 == *s2 && n > 0)
+	{
+		s1++;
+		s2++;
+		n--;
+	}
+	if (n == 0)
+		return (0);
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
+}

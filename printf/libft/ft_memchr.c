@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zichen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:19:37 by zichen            #+#    #+#             */
-/*   Updated: 2023/10/09 19:19:39 by zichen           ###   ########.fr       */
+/*   Created: 2023/09/10 14:25:16 by zichen            #+#    #+#             */
+/*   Updated: 2023/09/11 17:22:58 by zichen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "libft/libft.h"
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	char	*str;
+	size_t	i;
 
-int	printf_char(int c);
-
-
-
-#endif
+	i = 0;
+	str = (char *)s;
+	while (i < n)
+	{
+		if ((unsigned char)str[i] == (unsigned char)c)
+			return ((char *)s + i);
+		i++;
+	}
+	return (0);
+}
