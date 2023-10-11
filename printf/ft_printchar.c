@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printfstr.c                                     :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zichen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:20:02 by zichen            #+#    #+#             */
-/*   Updated: 2023/10/09 19:20:21 by zichen           ###   ########.fr       */
+/*   Created: 2023/10/09 19:19:51 by zichen            #+#    #+#             */
+/*   Updated: 2023/10/11 16:20:15 by zichen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include ""
+#include "ft_printf.h"
 
-void	ft_putstr(char *str)
+int	printf_char(int c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, str[i], 1);
-		i++;
-	}
-}
-
-int	ft_printstr(char *s)
-{
-
+	write(1, &c, 1);
 }
