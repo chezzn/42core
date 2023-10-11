@@ -28,13 +28,13 @@ int	ft_conversions(va_list args, const char format)
 	else if  (format == 'u')
 		len += ft_printunsigned(va_arg(args, unsigned int));
 	else if  ((format == 'x') || (format == 'X'))
-		len += ft_printhex(va_arg(args, unsigned int));
+		len += ft_printhex(va_arg(args, unsigned int), format);
 	else
 		write(1, &format, 1);
 	return (len);
 }
 
-int	ft_printf(const char *, ...)
+int	ft_printf(const char *format, ...)
 {
 
 }

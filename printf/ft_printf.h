@@ -18,8 +18,10 @@
 #include <stdlib.h>
 #include "libft/libft.h"
 
+int	ft_printf(const char *format, ...);
+int	ft_conversions(va_list args, const char format);
 int	printchar(int c);
 int	ft_printstr(char *str);
-
+int	ft_printhex(unsigned int num, const char format);
 
 #endif
