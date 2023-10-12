@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	printnbr(int n)
+int	ft_printnbr(int n)
 {
 	int		len;
 	char	*num;
@@ -21,5 +21,5 @@ int	printnbr(int n)
 	num = ft_itoa(n);
 	len = ft_printstr(num);
 	free (num);
-	return (num);
+	return (len);
 }

@@ -41,20 +41,20 @@ static	int	ft_numbersize(unsigned int nb, int n)
 char	*ft_itoa(int n)
 {
 	int				i;
-	int				p;
+	int				len;
 	unsigned int	nb;
 	char			*str;
 
 	nb = (unsigned int)n;
-	p = ft_numbersize(nb, n);
-	str = (char *)malloc(sizeof(char) * (p + 1));
+	len = ft_numbersize(nb, n);
+	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (str == NULL)
 		return (NULL);
 	if (isneg(n))
 		nb = -nb;
 	str[0] = '-';
-	str[p] = '\0';
-	i = p - 1;
+	str[len] = '\0';
+	i = len - 1;
 	if (nb == 0)
 		str[i] = '0';
 	while (nb && nb != 0)
