@@ -41,13 +41,12 @@ int	ft_printhex(unsigned int num, const char format)
 	if (num == 0)
 		return (write(1, "0", 1));
 	else
-	{
-		while (num != 0)
-		{
-			len++;
-			num = num / 10;
-		}
 		ft_puthex(num, format);
-		return (len);
+	while (num != 0)
+	{
+		len++;
+		num = num / 16;
 	}
+	return (len);
+
 }

@@ -12,19 +12,6 @@
 
 #include "ft_printf.h"
 
-int	ft_hexlen(unsigned int num)
-{
-	int	len;
-
-	len = 0;
-	while (num != 0)
-	{
-		len++;
-		num = num / 16;
-	}
-	return (len);
-}
-
 void	ft_puthex(unsigned int num, const char format)
 {
 	if (num >= 16)
@@ -48,9 +35,17 @@ void	ft_puthex(unsigned int num, const char format)
 
 int	ft_printhex(unsigned int num, const char format)
 {
+	int	len;
+
+	len = 0;
 	if (num == 0)
 		return (write(1, "0", 1));
 	else
 		ft_puthex(num, format);
-	return (ft_hexlen(num));
+	while (num != 0)
+	{
+		len++;
+		num = num / 16;
+	}
+	return (len);
 }
